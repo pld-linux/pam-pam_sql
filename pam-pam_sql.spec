@@ -5,7 +5,7 @@ Version:	0.7.2
 Release:	4
 License:	GPL
 Group:		Base
-Source0:	http://devel.duluoz.net/pam_sql/pkgs/%{name}-%{version}.tar.gz
+Source0:	http://devel.duluoz.net/pam_sql/pkgs/pam_sql-%{version}.tar.gz
 # Source0-md5:	50b01818609a8d8d3bdb2848f3083502
 Patch0:		%{name}-postgresql-7.1.patch
 Patch1:		%{name}-sqlinjection.patch
