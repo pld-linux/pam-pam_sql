@@ -7,11 +7,11 @@ Release:	6
 Epoch:		0
 License:	GPL
 Group:		Base
-Source0:	http://devel.duluoz.net/%{modulename}/pkgs/%{modulename}-%{version}.tar.gz
+Source0:	http://www.duluoz.net/%{modulename}/pkgs/%{modulename}-%{version}.tar.gz
 # Source0-md5:	50b01818609a8d8d3bdb2848f3083502
 Patch0:		%{name}-postgresql-7.1.patch
 Patch1:		%{name}-sqlinjection.patch
-URL:		http://devel.duluoz.net/%{modulename}/
+URL:		http://www.duluoz.net/%{modulename}/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	pam-devel
