@@ -3,7 +3,7 @@ Summary:	PAM module for auth UNIX users using data base
 Summary(pl):	modu³ PAM autentyfikuj±cy u¿ytkowników Linuksa poprzez bazê danych
 Name:		pam-%{modulename}
 Version:	0.7.2
-Release:	5
+Release:	6
 Epoch:		0
 License:	GPL
 Group:		Base
