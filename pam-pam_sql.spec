@@ -48,7 +48,7 @@ cp -f /usr/share/automake/config.* tools
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -D pam_sql $RPM_BUILD_ROOT/lib/security/pam_sql.so
+install -D pam_sql $RPM_BUILD_ROOT/%{_lib}/security/pam_sql.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -56,4 +56,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README TODO ChangeLog
-%attr(755,root,root) /lib/security/pam_sql.so
+%attr(755,root,root) /%{_lib}/security/pam_sql.so
