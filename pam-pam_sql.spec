@@ -3,6 +3,7 @@ Summary(pl):	modu³ PAM autentyfikuj±cy u¿ytkowników Linuksa poprzez bazê danych
 Name:		pam-pam_sql
 Version:	0.7.2
 Release:	4
+Epoch:		0
 License:	GPL
 Group:		Base
 Source0:	http://devel.duluoz.net/pam_sql/pkgs/pam_sql-%{version}.tar.gz
