@@ -13,9 +13,10 @@ Patch0:		%{name}-postgresql-7.1.patch
 Patch1:		%{name}-sqlinjection.patch
 URL:		http://devel.duluoz.net/%{modulename}/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	pam-devel
 BuildRequires:	postgresql-devel >= 7.2
-Obsoletes:	%{modulename}
+Obsoletes:	pam_sql
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,7 +35,7 @@ bazê danych PostgreSQL lub MySQL.
 %patch1 -p1
 
 %build
-cp -f /usr/share/automake/config.* .
+cp -f /usr/share/automake/config.* tools
 %{__autoconf}
 %configure \
 	--with-postgres
