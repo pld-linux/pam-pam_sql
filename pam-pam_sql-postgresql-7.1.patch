@@ -1,0 +1,22 @@
+--- pam_sql-0.7.2/src/db.h~	Thu Jan 25 20:33:17 2001
++++ pam_sql-0.7.2/src/db.h	Tue May  8 00:14:39 2001
+@@ -20,7 +20,7 @@
+ #include <mysql/mysql.h>
+ typedef MYSQL db_conn;
+ #elif USE_POSTGRES
+-#include <pgsql/libpq-fe.h>
++#include <libpq-fe.h>
+ typedef PGconn db_conn;
+ typedef PGresult db_result;
+ #endif
+--- pam_sql-0.7.2/src/backends/postgres.c~	Thu Jan 25 20:33:17 2001
++++ pam_sql-0.7.2/src/backends/postgres.c	Tue May  8 00:19:21 2001
+@@ -12,7 +12,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ #include <syslog.h>
+-#include <pgsql/libpq-fe.h>
++#include <libpq-fe.h>
+ 
+ #include "db.h"
+ #include "pam_sql.h"

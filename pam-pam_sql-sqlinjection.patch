@@ -1,0 +1,82 @@
+diff -urN pam_sql-0.7.2/src/acct.c pam_sql-pld/src/acct.c
+--- pam_sql-0.7.2/src/acct.c	Thu Jan 25 20:33:17 2001
++++ pam_sql-pld/src/acct.c	Sun Apr 13 13:21:26 2003
+@@ -68,7 +68,7 @@
+   /* write out the query */
+   snprintf (query, BUFLEN-1, 
+ 	    "select %s from %s where %s='%s' and %s>now()",
+-	    opts->usercol, opts->table, opts->usercol, user,
++	    opts->usercol, opts->table, opts->usercol, to_postgres_ok(user),
+ 	    opts->expcol);
+ 
+   /* execute the query */
+diff -urN pam_sql-0.7.2/src/auth.c pam_sql-pld/src/auth.c
+--- pam_sql-0.7.2/src/auth.c	Thu Jan 25 20:33:17 2001
++++ pam_sql-pld/src/auth.c	Sun Apr 13 13:21:57 2003
+@@ -93,8 +93,8 @@
+   /* set up the query string */
+   snprintf (query, BUFLEN-1, 
+ 	    "select %s from %s where %s='%s' and %s='%s'", 
+-	    opts->usercol, opts->table, opts->usercol, user, 
+-	    opts->passcol, passwd);
++	    opts->usercol, opts->table, opts->usercol, to_postgres_ok(user), 
++	    opts->passcol, to_postgres_ok(passwd));
+ 
+   result = db_exec (conn, query);
+   if ( ! result ) {
+diff -urN pam_sql-0.7.2/src/misc.c pam_sql-pld/src/misc.c
+--- pam_sql-0.7.2/src/misc.c	Thu Jan 25 20:33:17 2001
++++ pam_sql-pld/src/misc.c	Sun Apr 13 13:11:01 2003
+@@ -11,6 +11,11 @@
+  *
+  * The conv(), _pam_delete, and conversation() functions are:
+  *   Copyright (c) Cristian Gafton <gafton@redhat.com>, 1999
++ *
++ * The gmap() based on libgen by:
++ *   Grzegorz Kaczan <yah@do.pl>
++ *   Marcin Biczan <bibiak@do.pl>
++ *   Micha³ Ickiewicz <icek@do.pl>
+  */
+ 
+ 
+@@ -109,3 +114,28 @@
+ }
+ 
+ 
++char *gmap(char *str, char *m, char z)
++{
++ char *buff = NULL;
++ char *tmp = NULL;
++ int i, j;
++ int dl = 0;
++
++ if (!str) return "";
++ if( !strlen (str) || !strlen (m) || !z ) return str;
++
++ for( i=0, tmp=str; i<strlen (m); i++, tmp=str )
++  while( (tmp = strchr (tmp, m[i])) && tmp++ )
++   dl++;
++ if( !dl ) return str;
++
++ buff = (char *)malloc ((strlen (str) + dl + 1) * sizeof(char));
++ if( !buff ) return str;
++
++ for( i=0, j=0, dl=0; i<strlen (str); buff[dl++] = str[i], i++, j=0 )
++  while( m[j] )
++   if( m[j++] == str[i] ) buff[dl++] = z;
++ buff[dl] = 0;
++
++ return buff;
++}
+diff -urN pam_sql-0.7.2/src/misc.h pam_sql-pld/src/misc.h
+--- pam_sql-0.7.2/src/misc.h	Thu Jan 25 20:33:17 2001
++++ pam_sql-pld/src/misc.h	Sun Apr 13 13:12:08 2003
+@@ -22,4 +22,8 @@
+ int            conversation        (pam_handle_t *pamh);
+ 
+ 
++char *gmap(char *, char *, char);
++
++#define to_postgres_ok(str) gmap(str,"\\'",'\\')
++
+ #endif /* INCLUDE_PAM_SQL_MISC */
