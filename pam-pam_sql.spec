@@ -1,19 +1,21 @@
+%define 	modulename pam_sql
 Summary:	PAM module for auth UNIX users using data base
 Summary(pl):	modu³ PAM autentyfikuj±cy u¿ytkowników Linuksa poprzez bazê danych
-Name:		pam-pam_sql
+Name:		pam-%{modulename}
 Version:	0.7.2
 Release:	4
 Epoch:		0
 License:	GPL
 Group:		Base
-Source0:	http://devel.duluoz.net/pam_sql/pkgs/pam_sql-%{version}.tar.gz
+Source0:	http://devel.duluoz.net/%{modulename}/pkgs/%{modulename}-%{version}.tar.gz
 # Source0-md5:	50b01818609a8d8d3bdb2848f3083502
 Patch0:		%{name}-postgresql-7.1.patch
 Patch1:		%{name}-sqlinjection.patch
-URL:		http://devel.duluoz.net/pam_sql/
+URL:		http://devel.duluoz.net/%{modulename}/
 BuildRequires:	autoconf
 BuildRequires:	pam-devel
 BuildRequires:	postgresql-devel >= 7.2
+Obsoletes:	%{modulename}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,7 +29,7 @@ Modu³ PAM pozwalaj±cy na autentyfikacjê u¿ytkowników Linuksa poprzez
 bazê danych PostgreSQL lub MySQL.
 
 %prep
-%setup -q
+%setup -q -n %{modulename}-%{version}
 %patch0 -p1
 %patch1 -p1
 
