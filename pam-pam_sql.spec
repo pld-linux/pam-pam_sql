@@ -3,7 +3,7 @@ Summary:	PAM module for auth UNIX users using data base
 Summary(pl):	modu³ PAM autentyfikuj±cy u¿ytkowników Linuksa poprzez bazê danych
 Name:		pam-%{modulename}
 Version:	0.7.2
-Release:	4
+Release:	5
 Epoch:		0
 License:	GPL
 Group:		Base
@@ -34,6 +34,7 @@ bazê danych PostgreSQL lub MySQL.
 %patch1 -p1
 
 %build
+cp -f /usr/share/automake/config.* .
 %{__autoconf}
 %configure \
 	--with-postgres
