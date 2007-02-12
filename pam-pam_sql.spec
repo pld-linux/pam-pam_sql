@@ -1,6 +1,6 @@
 %define 	modulename pam_sql
 Summary:	PAM module for authenticating users against SQL database
-Summary(pl):	Modu≥ PAM uwierzytelniaj±cy uøytkownikÛw wzglÍdem bazy danych
+Summary(pl.UTF-8):   Modu≈Ç PAM uwierzytelniajƒÖcy u≈ºytkownik√≥w wzglƒôdem bazy danych
 Name:		pam-%{modulename}
 Version:	0.7.2
 Release:	7
@@ -25,11 +25,11 @@ users against an SQL database. The author uses PostgreSQL, but there's
 also some MySQL code leftover from the pam_mysql project (whence this
 project evolved) that I'm quite sure doesn't work.
 
-%description -l pl
-pam_sql to modu≥ PAM maj±cy na celu uwierzytelnianie uøytkownikÛw
-wzglÍdem bazy SQL niezaleønie od uøywanego backendu. Autor uøywa
-PostgreSQL-a, ale obecny jest takøe kod dla MySQL-a z projektu
-pam_mysql (ktÛry prawdopodobnie na razie nie dzia≥a).
+%description -l pl.UTF-8
+pam_sql to modu≈Ç PAM majƒÖcy na celu uwierzytelnianie u≈ºytkownik√≥w
+wzglƒôdem bazy SQL niezale≈ºnie od u≈ºywanego backendu. Autor u≈ºywa
+PostgreSQL-a, ale obecny jest tak≈ºe kod dla MySQL-a z projektu
+pam_mysql (kt√≥ry prawdopodobnie na razie nie dzia≈Ça).
 
 %prep
 %setup -q -n %{modulename}-%{version}
