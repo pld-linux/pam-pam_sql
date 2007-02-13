@@ -1,6 +1,6 @@
 %define 	modulename pam_sql
 Summary:	PAM module for authenticating users against SQL database
-Summary(pl.UTF-8):   Moduł PAM uwierzytelniający użytkowników względem bazy danych
+Summary(pl.UTF-8):	Moduł PAM uwierzytelniający użytkowników względem bazy danych
 Name:		pam-%{modulename}
 Version:	0.7.2
 Release:	7
